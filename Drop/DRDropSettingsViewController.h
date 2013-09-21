@@ -10,14 +10,15 @@
 
 #import <MapKit/MapKit.h>
 
+@class DRDroplet;
 @protocol DRDropSettingsDelegate <NSObject>
 
 - (void)dropSettingsCancelled:(id)sender;
-- (void)dropSettingsDone:(id)sender;
+- (void)dropSettingsDone:(id)sender droplet:(DRDroplet *)droplet;
 
 @end
 
-@interface DRDropSettingsViewController : UIViewController
+@interface DRDropSettingsViewController : UIViewController <MKMapViewDelegate>
 
 - (IBAction)cancelButtonTapped:(id)sender;
 - (IBAction)dropButtonTapped:(id)sender;
@@ -27,5 +28,8 @@
 @property (nonatomic, assign) id <DRDropSettingsDelegate> delegate;
 
 @property (nonatomic) MKCoordinateRegion originalRegion;
+
+@property (weak, nonatomic) IBOutlet UILabel *rangeLabel;
+- (IBAction)rangeValueChanged:(id)sender;
 
 @end

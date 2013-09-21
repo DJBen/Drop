@@ -10,8 +10,6 @@
 
 @interface DRDroplet ()
 
-@property (nonatomic) CLLocationCoordinate2D coordinate;
-
 @end
 
 @implementation DRDroplet
@@ -24,6 +22,14 @@
     return self;
 }
 
+- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate range:(CLLocationDistance)range duration:(NSTimeInterval)duration password:(NSString *)password {
+    self = [self initWithCoordinate:coordinate];
+    if (self) {
+        
+    }
+    return self;
+}
+
 #pragma mark - Annotation
 - (NSString *)title {
     return @"Test";
@@ -31,10 +37,6 @@
 
 - (NSString *)subtitle {
     return @"Test Subtitle";
-}
-
-- (CLLocationCoordinate2D)coordinate {
-    return _coordinate;
 }
 
 @end

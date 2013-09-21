@@ -37,14 +37,8 @@
         [self.drop setTitle:@"Drop it" forState:UIControlStateNormal];
         [self.drop setBackgroundColor:[UIColor whiteColor]];
         [self.drop addTarget:self action:@selector(dropButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        
-        // Add a description label
-//        CGSize labelSize = CGSizeMake(200, 100);
-//        UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake((screenBounds.size.width - labelSize.width) / 2, (screenBounds.size.height - labelSize.height) / 2 + 50, labelSize.width, labelSize.height)];
-//        descriptionLabel.textColor = [UIColor whiteColor];
-//        descriptionLabel.textAlignment = NSTextAlignmentCenter;
-//        descriptionLabel.text = @"Tap to drop";
-//        [self addSubview:descriptionLabel];
+        [self.drop setAlpha:0.0];
+        [self addSubview:self.drop];
         
     }
     return self;
@@ -59,24 +53,30 @@
 }
 
 - (void)setDropVisible:(BOOL)visible animated:(BOOL)animated {
-    if (![self.drop superview] && visible) {
-        [self addSubview:self.drop];
+    if (visible) {
         if (animated) {
-            self.drop.alpha = 0.0f;
             [UIView animateWithDuration:0.4 animations:^{
                 self.drop.alpha = 1.0;
             }];
+        } else {
+            [self.drop setAlpha:1.0];
         }
-    } else if ([self.drop superview] && !visible) {
+    } else {
         if (animated) {
             [UIView animateWithDuration:0.3 animations:^{
                 self.drop.alpha = 0.0f;
-            } completion:^(BOOL finished) {
-                [self.drop removeFromSuperview];
             }];
         } else {
-            [self.drop removeFromSuperview];
+            [self.drop setAlpha:0.0];
         }
+    }
+}
+
+- (void)setDropEnabled:(BOOL)enabled {
+    if (enabled && !self.drop.enabled) {
+        [self.drop setEnabled:YES];
+    } else if (!enabled && self.drop.enabled) {
+        [self.drop setEnabled:NO];
     }
 }
 

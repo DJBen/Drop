@@ -12,9 +12,14 @@
 #import "DRAimingView.h"
 #import "DRDropSettingsViewController.h"
 
+#define DroppableRadius 1000
+
 @interface DRMainViewController () <UIGestureRecognizerDelegate, DRAimingDelegate, DRDropSettingsDelegate>
 
 @property (nonatomic) BOOL firstTimeLocationUpdate;
+@property (nonatomic) BOOL dropMode;
+
+@property (nonatomic, strong) MKUserLocation *currentUserLocation;
 
 @property (nonatomic, strong) DRAimingView *currentAimingView;
 
@@ -54,13 +59,30 @@
 }
 
 #pragma mark - Map Delegate
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    // Set drop button enabled / disabled
+    [self.currentAimingView setDropEnabled:[self isInDroppableRange]];
+}
+
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    _currentUserLocation = userLocation;
+    
     // Center at user location.
     if (self.firstTimeLocationUpdate) {
         MKCoordinateSpan span = MKCoordinateSpanMake(0.025, 0.025);
         MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
         [mapView setRegion:region animated:YES];
         _firstTimeLocationUpdate = NO;
+    }
+
+    [self refreshOverlay];
+}
+
+- (void)refreshOverlay {
+    [self.mapView removeOverlays:[self.mapView overlays]];
+    if (self.dropMode) {
+        MKCircle *rangeIndicator = [MKCircle circleWithCenterCoordinate:self.currentUserLocation.coordinate radius:DroppableRadius];
+        [self.mapView addOverlay:rangeIndicator];
     }
 }
 
@@ -82,22 +104,50 @@
     return nil;
 }
 
-- (IBAction)dropButtonTapped:(id)sender {
-    
-    // Add aiming view
-    self.currentAimingView = [[DRAimingView alloc] init];
-    self.currentAimingView.delegate = self;
-    [self.view addSubview:self.currentAimingView];
-    
-    // Temporarily disable drop button
-    [self.dropButton setEnabled:NO];
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    if ([overlay isKindOfClass:[MKCircle class]]) {
+        MKCircleRenderer *circle = [[MKCircleRenderer alloc] initWithOverlay:overlay];
+        if ([self isInDroppableRange]) {
+            circle.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.15];
+            circle.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
+        } else {
+            circle.fillColor = [[UIColor redColor] colorWithAlphaComponent:0.15];
+            circle.strokeColor = [[UIColor purpleColor] colorWithAlphaComponent:0.5];
+        }
+        circle.lineWidth = 1;
+        return circle;
+    }
+    return nil;
+}
 
+- (BOOL)isInDroppableRange {
+    CLLocation *pinLocation = [[CLLocation alloc] initWithLatitude:self.mapView.centerCoordinate.latitude longitude:self.mapView.centerCoordinate.longitude];
+    return [pinLocation distanceFromLocation:self.currentUserLocation.location] <= DroppableRadius;
+}
+
+- (IBAction)dropButtonTapped:(id)sender {
+    if (self.dropMode) {
+        self.dropMode = NO;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.currentAimingView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            [self.currentAimingView removeFromSuperview];
+        }];
+    } else {
+        self.dropMode = YES;
+        // Add aiming view
+        self.currentAimingView = [[DRAimingView alloc] init];
+        self.currentAimingView.delegate = self;
+        [self.view addSubview:self.currentAimingView];
+    }
+    [self refreshOverlay];
 }
 
 - (void)didDragMap:(UIPanGestureRecognizer *)gestureRecognizer {
     if (!self.currentAimingView) return;
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [self.currentAimingView setDropVisible:YES animated:YES];
+        [self refreshOverlay];
     } else {
         [self.currentAimingView setDropVisible:NO animated:YES];
     }
@@ -105,8 +155,7 @@
 
 #pragma mark - Aiming Delegate
 - (void)dropFile {
-    // Re-enable drop button
-    [self.dropButton setEnabled:YES];
+    self.dropMode = NO;
     
     // Remove aiming view
     [UIView animateWithDuration:0.3 animations:^{
@@ -120,10 +169,12 @@
 
 #pragma mark - Drop Settings Delegate
 - (void)dropSettingsCancelled:(id)sender {
+    [self refreshOverlay];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)dropSettingsDone:(id)sender {
+- (void)dropSettingsDone:(id)sender droplet:(DRDroplet *)droplet {
+    [self refreshOverlay];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

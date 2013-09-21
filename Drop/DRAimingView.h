@@ -16,6 +16,8 @@
 
 @interface DRAimingView : UIView
 
+- (void)setDropEnabled:(BOOL)enabled;
+
 - (void)setDropVisible:(BOOL)visible animated:(BOOL)animated;
 
 @property (nonatomic, assign) id <DRAimingDelegate> delegate;
