@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0D98F5759840188973E72F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E29F8429CA4EABAE927E9C /* libPods.a */; };
 		F451D45317ED69E00086BDD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45217ED69E00086BDD4 /* Foundation.framework */; };
 		F451D45517ED69E00086BDD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45417ED69E00086BDD4 /* CoreGraphics.framework */; };
 		F451D45717ED69E00086BDD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45617ED69E00086BDD4 /* UIKit.framework */; };
@@ -14,13 +15,17 @@
 		F451D45F17ED69E00086BDD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D45E17ED69E00086BDD4 /* main.m */; };
 		F451D46317ED69E00086BDD4 /* DRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D46217ED69E00086BDD4 /* DRAppDelegate.m */; };
 		F451D46617ED69E00086BDD4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F451D46417ED69E00086BDD4 /* Main.storyboard */; };
-		F451D46917ED69E00086BDD4 /* DRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D46817ED69E00086BDD4 /* DRViewController.m */; };
+		F451D46917ED69E00086BDD4 /* DRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D46817ED69E00086BDD4 /* DRMainViewController.m */; };
 		F451D46B17ED69E00086BDD4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F451D46A17ED69E00086BDD4 /* Images.xcassets */; };
 		F451D47217ED69E10086BDD4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D47117ED69E10086BDD4 /* XCTest.framework */; };
 		F451D47317ED69E10086BDD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45217ED69E00086BDD4 /* Foundation.framework */; };
 		F451D47417ED69E10086BDD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45617ED69E00086BDD4 /* UIKit.framework */; };
 		F451D47C17ED69E10086BDD4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F451D47A17ED69E10086BDD4 /* InfoPlist.strings */; };
 		F451D47E17ED69E10086BDD4 /* DropTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D47D17ED69E10086BDD4 /* DropTests.m */; };
+		F451D48817ED6E820086BDD4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D48717ED6E820086BDD4 /* MapKit.framework */; };
+		F451D48B17EE01300086BDD4 /* DRDroplet.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D48A17EE01300086BDD4 /* DRDroplet.m */; };
+		F451D48E17EE122D0086BDD4 /* DRAimingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D48D17EE122D0086BDD4 /* DRAimingView.m */; };
+		F451D49117EE1F2D0086BDD4 /* DRDropSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F451D49017EE1F2D0086BDD4 /* DRDropSettingsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7281E9809AC34674959A98F2 /* Pods/Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		A4E29F8429CA4EABAE927E9C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F451D44F17ED69E00086BDD4 /* Drop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F451D45217ED69E00086BDD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F451D45417ED69E00086BDD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,14 +52,21 @@
 		F451D46117ED69E00086BDD4 /* DRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DRAppDelegate.h; sourceTree = "<group>"; };
 		F451D46217ED69E00086BDD4 /* DRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRAppDelegate.m; sourceTree = "<group>"; };
 		F451D46517ED69E00086BDD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F451D46717ED69E00086BDD4 /* DRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DRViewController.h; sourceTree = "<group>"; };
-		F451D46817ED69E00086BDD4 /* DRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRViewController.m; sourceTree = "<group>"; };
+		F451D46717ED69E00086BDD4 /* DRMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DRMainViewController.h; sourceTree = "<group>"; };
+		F451D46817ED69E00086BDD4 /* DRMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRMainViewController.m; sourceTree = "<group>"; };
 		F451D46A17ED69E00086BDD4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F451D47017ED69E10086BDD4 /* DropTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F451D47117ED69E10086BDD4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F451D47917ED69E10086BDD4 /* DropTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DropTests-Info.plist"; sourceTree = "<group>"; };
 		F451D47B17ED69E10086BDD4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F451D47D17ED69E10086BDD4 /* DropTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropTests.m; sourceTree = "<group>"; };
+		F451D48717ED6E820086BDD4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F451D48917EE01300086BDD4 /* DRDroplet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRDroplet.h; sourceTree = "<group>"; };
+		F451D48A17EE01300086BDD4 /* DRDroplet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRDroplet.m; sourceTree = "<group>"; };
+		F451D48C17EE122D0086BDD4 /* DRAimingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRAimingView.h; sourceTree = "<group>"; };
+		F451D48D17EE122D0086BDD4 /* DRAimingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRAimingView.m; sourceTree = "<group>"; };
+		F451D48F17EE1F2D0086BDD4 /* DRDropSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRDropSettingsViewController.h; sourceTree = "<group>"; };
+		F451D49017EE1F2D0086BDD4 /* DRDropSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRDropSettingsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +74,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F451D48817ED6E820086BDD4 /* MapKit.framework in Frameworks */,
 				F451D45517ED69E00086BDD4 /* CoreGraphics.framework in Frameworks */,
 				F451D45717ED69E00086BDD4 /* UIKit.framework in Frameworks */,
 				F451D45317ED69E00086BDD4 /* Foundation.framework in Frameworks */,
+				CC0D98F5759840188973E72F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +102,7 @@
 				F451D47717ED69E10086BDD4 /* DropTests */,
 				F451D45117ED69E00086BDD4 /* Frameworks */,
 				F451D45017ED69E00086BDD4 /* Products */,
+				7281E9809AC34674959A98F2 /* Pods/Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +118,12 @@
 		F451D45117ED69E00086BDD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F451D48717ED6E820086BDD4 /* MapKit.framework */,
 				F451D45217ED69E00086BDD4 /* Foundation.framework */,
 				F451D45417ED69E00086BDD4 /* CoreGraphics.framework */,
 				F451D45617ED69E00086BDD4 /* UIKit.framework */,
 				F451D47117ED69E10086BDD4 /* XCTest.framework */,
+				A4E29F8429CA4EABAE927E9C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -115,8 +134,14 @@
 				F451D46117ED69E00086BDD4 /* DRAppDelegate.h */,
 				F451D46217ED69E00086BDD4 /* DRAppDelegate.m */,
 				F451D46417ED69E00086BDD4 /* Main.storyboard */,
-				F451D46717ED69E00086BDD4 /* DRViewController.h */,
-				F451D46817ED69E00086BDD4 /* DRViewController.m */,
+				F451D46717ED69E00086BDD4 /* DRMainViewController.h */,
+				F451D46817ED69E00086BDD4 /* DRMainViewController.m */,
+				F451D48F17EE1F2D0086BDD4 /* DRDropSettingsViewController.h */,
+				F451D49017EE1F2D0086BDD4 /* DRDropSettingsViewController.m */,
+				F451D48917EE01300086BDD4 /* DRDroplet.h */,
+				F451D48A17EE01300086BDD4 /* DRDroplet.m */,
+				F451D48C17EE122D0086BDD4 /* DRAimingView.h */,
+				F451D48D17EE122D0086BDD4 /* DRAimingView.m */,
 				F451D46A17ED69E00086BDD4 /* Images.xcassets */,
 				F451D45917ED69E00086BDD4 /* Supporting Files */,
 			);
@@ -159,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F451D48117ED69E10086BDD4 /* Build configuration list for PBXNativeTarget "Drop" */;
 			buildPhases = (
+				2E98112D1B16406BA3FF0343 /* Check Pods Manifest.lock */,
 				F451D44B17ED69E00086BDD4 /* Sources */,
 				F451D44C17ED69E00086BDD4 /* Frameworks */,
 				F451D44D17ED69E00086BDD4 /* Resources */,
+				C76E8A34C04441D38A43548D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,13 +272,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E98112D1B16406BA3FF0343 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C76E8A34C04441D38A43548D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F451D44B17ED69E00086BDD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F451D49117EE1F2D0086BDD4 /* DRDropSettingsViewController.m in Sources */,
 				F451D46317ED69E00086BDD4 /* DRAppDelegate.m in Sources */,
-				F451D46917ED69E00086BDD4 /* DRViewController.m in Sources */,
+				F451D46917ED69E00086BDD4 /* DRMainViewController.m in Sources */,
+				F451D48E17EE122D0086BDD4 /* DRAimingView.m in Sources */,
+				F451D48B17EE01300086BDD4 /* DRDroplet.m in Sources */,
 				F451D45F17ED69E00086BDD4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +439,7 @@
 		};
 		F451D48217ED69E10086BDD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7281E9809AC34674959A98F2 /* Pods/Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -389,6 +453,7 @@
 		};
 		F451D48317ED69E10086BDD4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7281E9809AC34674959A98F2 /* Pods/Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -461,6 +526,7 @@
 				F451D48317ED69E10086BDD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F451D48417ED69E10086BDD4 /* Build configuration list for PBXNativeTarget "DropTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +535,7 @@
 				F451D48617ED69E10086BDD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

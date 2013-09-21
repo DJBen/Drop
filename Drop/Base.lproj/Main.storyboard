@@ -1,21 +1,146 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4451" systemVersion="13A461" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="y5u-2q-84M">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3676"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--Main View Controller - Scan Map-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="DRViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="DRMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G7X-Cx-ROL"/>
+                        <viewControllerLayoutGuide type="bottom" id="uNm-0Y-YEQ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMC-JS-Dv0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="pxB-OI-sGb"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Scan Map" id="1mi-es-yqN">
+                        <barButtonItem key="leftBarButtonItem" title="Files" id="ZX0-jZ-G51"/>
+                        <barButtonItem key="rightBarButtonItem" title="Drop" id="nHs-uc-89y">
+                            <connections>
+                                <action selector="dropButtonTapped:" destination="vXZ-lx-hvc" id="ADE-ge-4W2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dropButton" destination="nHs-uc-89y" id="p8p-fZ-zUG"/>
+                        <outlet property="mapView" destination="dMC-JS-Dv0" id="fLE-Ea-0xO"/>
+                        <segue destination="vjG-es-u4I" kind="modal" identifier="dropSettingsSegue" modalTransitionStyle="crossDissolve" id="xCW-hc-6dF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="495" y="77"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rz0-Ig-8re">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="vjG-es-u4I" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bkY-21-hQw">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kcL-Ia-MVd" kind="relationship" relationship="rootViewController" id="9yY-SX-g3Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j8y-WT-nkS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="917" y="77"/>
+        </scene>
+        <!--Drop Settings View Controller - Drop-->
+        <scene sceneID="dZq-vq-QAz">
+            <objects>
+                <viewController id="kcL-Ia-MVd" customClass="DRDropSettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nyd-88-CnL"/>
+                        <viewControllerLayoutGuide type="bottom" id="PWm-R0-jsZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gY3-ri-zKH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ywa-cF-BYe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kcL-Ia-MVd" id="6fI-Hi-Y3U"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dq-pE-F55">
+                                <rect key="frame" x="32" y="518" width="256" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="DROP">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dropButtonTapped:" destination="kcL-Ia-MVd" eventType="touchUpInside" id="Us4-wX-AIY"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Lxy-TI-hZX">
+                                <rect key="frame" x="30" y="434" width="260" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abU-vF-Ell">
+                                <rect key="frame" x="32" y="475" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Duration">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdR-4T-H2Z">
+                                <rect key="frame" x="168" y="475" width="120" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Password">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Drop" id="rBY-dQ-K3c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tr3-I1-Vsf">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="kcL-Ia-MVd" id="ohN-pQ-cR5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="Ywa-cF-BYe" id="j9l-AZ-Din"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zFc-ni-uOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1369" y="77"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vjS-U5-qTY">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="y5u-2q-84M" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x6g-3o-roW">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="nUr-2M-9AL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oMc-eb-5qZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-27" y="77"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
