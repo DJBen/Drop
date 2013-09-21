@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.mapView setRegion:self.originalRegion];
+    [self focusToCurrentCoordinate];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,9 +44,9 @@
     [self.delegate dropSettingsDone:self];
 }
 
-- (void)focusToCoordinate:(CLLocationCoordinate2D)coordinate {
-    MKCoordinateSpan span = MKCoordinateSpanMake(0.01, 0.01);
-    MKCoordinateRegion region = MKCoordinateRegionMake(coordinate, span);
+- (void)focusToCurrentCoordinate {
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.02, 0.02);
+    MKCoordinateRegion region = MKCoordinateRegionMake(self.originalRegion.center, span);
     [self.mapView setRegion:region animated:YES];
 }
 @end

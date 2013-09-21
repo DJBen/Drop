@@ -26,6 +26,6 @@
 
 @property (nonatomic, assign) id <DRDropSettingsDelegate> delegate;
 
-- (void)focusToCoordinate:(CLLocationCoordinate2D)coordinate;
+@property (nonatomic) MKCoordinateRegion originalRegion;
 
 @end

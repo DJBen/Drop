@@ -44,6 +44,7 @@
         UINavigationController *nav = [segue destinationViewController];
         DRDropSettingsViewController *dropSettingsViewController = [nav viewControllers][0];
         dropSettingsViewController.delegate = self;
+        [dropSettingsViewController setOriginalRegion:self.mapView.region];
     }
 }
 
@@ -114,18 +115,17 @@
         [self.currentAimingView removeFromSuperview];
     }];
     
-    // Drop it!
-    DRDroplet *droplet = [[DRDroplet alloc] initWithCoordinate:self.mapView.centerCoordinate];
-    [self.mapView addAnnotation:droplet];
+    [self performSegueWithIdentifier:@"dropSettingsSegue" sender:self];
 }
 
 #pragma mark - Drop Settings Delegate
 - (void)dropSettingsCancelled:(id)sender {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)dropSettingsDone:(id)sender {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 @end
