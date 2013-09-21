@@ -1,0 +1,23 @@
+PODS:
+  - AFNetworking (2.0.0-RC3):
+    - AFNetworking/Core
+  - AFNetworking/Core (2.0.0-RC3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLConnection (2.0.0-RC3)
+  - AFNetworking/Reachability (2.0.0-RC3)
+  - AFNetworking/Security (2.0.0-RC3)
+  - AFNetworking/Serialization (2.0.0-RC3)
+  - Facebook-iOS-SDK (3.8.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - Facebook-iOS-SDK
+
+SPEC CHECKSUMS:
+  AFNetworking: ebc18e280dab2e71f9368cfc8e5c60ed125eec1a
+  Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
+
+COCOAPODS: 0.25.0
