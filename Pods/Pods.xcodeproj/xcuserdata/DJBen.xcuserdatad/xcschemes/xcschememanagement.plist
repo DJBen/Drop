@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>Pods-Dropbox-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Pods-Facebook-iOS-SDK.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -22,6 +27,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0302557206944017A9693DFE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2155A5EA4BB0440BAD6FDC13</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>271A1BBA92BD43DD9602ECAC</key>
 		<dict>
 			<key>primary</key>
@@ -32,7 +47,47 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3FAAAB0811314FADA5C389CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>49F6FB06C01F469885857734</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EA89012D87945528788D030</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7260EBF09C704F3AAE58B5B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7816CA7B7705424996E5320B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>85000048D35A49D6ABC6A808</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9610F5A3900B460DA07466C2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>97F996E4415642519A514955</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B4D23EA9179C47BEAE78E822</key>
 		<dict>
 			<key>primary</key>
 			<true/>

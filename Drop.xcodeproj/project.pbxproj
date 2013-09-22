@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CC0D98F5759840188973E72F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E29F8429CA4EABAE927E9C /* libPods.a */; };
+		F437D0AD17EE762E00182D48 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F437D0AB17EE762E00182D48 /* DBChooser.bundle */; };
+		F437D0AE17EE762E00182D48 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0AC17EE762E00182D48 /* DBChooser.framework */; };
+		F437D0B117EE7ADB00182D48 /* DRFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0B017EE7ADB00182D48 /* DRFileManager.m */; };
+		F437D0B317EE836200182D48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0B217EE836200182D48 /* SystemConfiguration.framework */; };
+		F437D0B517EE836800182D48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0B417EE836800182D48 /* MobileCoreServices.framework */; };
 		F451D45317ED69E00086BDD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45217ED69E00086BDD4 /* Foundation.framework */; };
 		F451D45517ED69E00086BDD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45417ED69E00086BDD4 /* CoreGraphics.framework */; };
 		F451D45717ED69E00086BDD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45617ED69E00086BDD4 /* UIKit.framework */; };
@@ -41,6 +46,12 @@
 /* Begin PBXFileReference section */
 		7281E9809AC34674959A98F2 /* Pods/Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		A4E29F8429CA4EABAE927E9C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F437D0AB17EE762E00182D48 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
+		F437D0AC17EE762E00182D48 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
+		F437D0AF17EE7ADB00182D48 /* DRFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRFileManager.h; sourceTree = "<group>"; };
+		F437D0B017EE7ADB00182D48 /* DRFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRFileManager.m; sourceTree = "<group>"; };
+		F437D0B217EE836200182D48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F437D0B417EE836800182D48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F451D44F17ED69E00086BDD4 /* Drop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F451D45217ED69E00086BDD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F451D45417ED69E00086BDD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -74,8 +85,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F437D0B517EE836800182D48 /* MobileCoreServices.framework in Frameworks */,
+				F437D0B317EE836200182D48 /* SystemConfiguration.framework in Frameworks */,
 				F451D48817ED6E820086BDD4 /* MapKit.framework in Frameworks */,
 				F451D45517ED69E00086BDD4 /* CoreGraphics.framework in Frameworks */,
+				F437D0AE17EE762E00182D48 /* DBChooser.framework in Frameworks */,
 				F451D45717ED69E00086BDD4 /* UIKit.framework in Frameworks */,
 				F451D45317ED69E00086BDD4 /* Foundation.framework in Frameworks */,
 				CC0D98F5759840188973E72F /* libPods.a in Frameworks */,
@@ -118,6 +132,10 @@
 		F451D45117ED69E00086BDD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F437D0B417EE836800182D48 /* MobileCoreServices.framework */,
+				F437D0B217EE836200182D48 /* SystemConfiguration.framework */,
+				F437D0AB17EE762E00182D48 /* DBChooser.bundle */,
+				F437D0AC17EE762E00182D48 /* DBChooser.framework */,
 				F451D48717ED6E820086BDD4 /* MapKit.framework */,
 				F451D45217ED69E00086BDD4 /* Foundation.framework */,
 				F451D45417ED69E00086BDD4 /* CoreGraphics.framework */,
@@ -142,6 +160,8 @@
 				F451D48A17EE01300086BDD4 /* DRDroplet.m */,
 				F451D48C17EE122D0086BDD4 /* DRAimingView.h */,
 				F451D48D17EE122D0086BDD4 /* DRAimingView.m */,
+				F437D0AF17EE7ADB00182D48 /* DRFileManager.h */,
+				F437D0B017EE7ADB00182D48 /* DRFileManager.m */,
 				F451D46A17ED69E00086BDD4 /* Images.xcassets */,
 				F451D45917ED69E00086BDD4 /* Supporting Files */,
 			);
@@ -257,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F451D46B17ED69E00086BDD4 /* Images.xcassets in Resources */,
+				F437D0AD17EE762E00182D48 /* DBChooser.bundle in Resources */,
 				F451D45D17ED69E00086BDD4 /* InfoPlist.strings in Resources */,
 				F451D46617ED69E00086BDD4 /* Main.storyboard in Resources */,
 			);
@@ -314,6 +335,7 @@
 				F451D46317ED69E00086BDD4 /* DRAppDelegate.m in Sources */,
 				F451D46917ED69E00086BDD4 /* DRMainViewController.m in Sources */,
 				F451D48E17EE122D0086BDD4 /* DRAimingView.m in Sources */,
+				F437D0B117EE7ADB00182D48 /* DRFileManager.m in Sources */,
 				F451D48B17EE01300086BDD4 /* DRDroplet.m in Sources */,
 				F451D45F17ED69E00086BDD4 /* main.m in Sources */,
 			);
@@ -443,6 +465,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/DJBen/Documents/Developments/Drop,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Drop/Drop-Prefix.pch";
 				INFOPLIST_FILE = "Drop/Drop-Info.plist";
@@ -457,6 +483,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/DJBen/Documents/Developments/Drop,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Drop/Drop-Prefix.pch";
 				INFOPLIST_FILE = "Drop/Drop-Info.plist";

@@ -8,12 +8,24 @@
 
 #import "DRAppDelegate.h"
 
+#import <DBChooser/DBChooser.h>
+
 @implementation DRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([[DBChooser defaultChooser] handleOpenURL:url]) {
+        // This was a Chooser response and handleOpenURL automatically ran the
+        // completion block
+        return YES;
+    }
+    return NO;
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -32,4 +32,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *rangeLabel;
 - (IBAction)rangeValueChanged:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *durationButton;
+- (IBAction)durationButtonTapped:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *passwordButton;
+- (IBAction)passwordButtonTapped:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *chooseContentButton;
+- (IBAction)chooseContentButtonTapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *contentDetailLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *contentThumbnail;
+
 @end

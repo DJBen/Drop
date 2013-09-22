@@ -1,6 +1,6 @@
 // AFXMLRequestOperation.h
 //
-// Copyright (c) 2013 AFNetworking (http://afnetworking.com)
+// Copyright (c) 2011 Gowalla (http://gowalla.com/)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,18 @@
 #import <Availability.h>
 
 /**
- `AFXMLRequestOperation` is a subclass of `AFHTTPRequestOperation` for downloading and working with XML response data. It uses an instance of `AFXMLParserSerializer` to handle response validation and serialization, with properties for `NSXMLDocument` using `AFXMLDocumentSerializer` on supported platforms.
+ `AFXMLRequestOperation` is a subclass of `AFHTTPRequestOperation` for downloading and working with XML response data.
+
+ ## Acceptable Content Types
+
+ By default, `AFXMLRequestOperation` accepts the following MIME types, which includes the official standard, `application/xml`, as well as other commonly-used types:
+
+ - `application/xml`
+ - `text/xml`
+
+ ## Use With AFHTTPClient
+
+ When `AFXMLRequestOperation` is registered with `AFHTTPClient`, the response object in the success callback of `HTTPRequestOperationWithRequest:success:failure:` will be an instance of `NSXMLParser`. On platforms that support `NSXMLDocument`, you have the option to ignore the response object, and simply use the `responseXMLDocument` property of the operation argument of the callback.
  */
 @interface AFXMLRequestOperation : AFHTTPRequestOperation
 
@@ -34,13 +45,12 @@
 /// @name Getting Response Data
 ///----------------------------
 
-#ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
-
 /**
- Input and output options specifically intended for `NSXMLDocument` objects. For possible values, see the `NSJSONSerialization` documentation section "NSJSONReadingOptions". `0` by default.
+ An `NSXMLParser` object constructed from the response data.
  */
-@property (nonatomic, assign) NSUInteger XMLDocumentOptions;
+@property (readonly, nonatomic, strong) NSXMLParser *responseXMLParser;
 
+#ifdef __MAC_OS_X_VERSION_MIN_REQUIRED
 /**
  An `NSXMLDocument` object constructed from the response data. If an error occurs while parsing, `nil` will be returned, and the `error` property will be set to the error.
  */
