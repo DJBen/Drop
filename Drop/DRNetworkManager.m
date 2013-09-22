@@ -22,6 +22,8 @@
 
 @property (nonatomic) NSString *userName;
 
+@property (nonatomic, strong) NSString *accessToken;
+
 @end
 
 @implementation DRNetworkManager
@@ -69,6 +71,7 @@
     
 
     NSString *accessToken = [[[appDelegate session] accessTokenData] accessToken];
+    [[self sharedManager] setAccessToken:accessToken];
     
     if (!appDelegate.session.accessTokenData.accessToken) {
         NSLog(@"Warning! No access token.");
@@ -106,11 +109,11 @@
         fileName = [droplet.filePath lastPathComponent];
     }
     
-    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/drop/" parameters:@{@"access_token" : [self accessToken], @"comment" : fileName, @"title" : droplet.dropletDescription, @"type" : mimeType} constructingBodyWithBlock: ^(id <AFMultipartFormData> formData) {
+    NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/drop/" parameters:@{@"access_token" : [[self sharedManager] accessToken], @"comment" : fileName, @"title" : droplet.dropletDescription, @"type" : mimeType} constructingBodyWithBlock: ^(id <AFMultipartFormData> formData) {
         [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:mimeType];
     }];
     
-    NSLog(@"Access token: %@", [self accessToken]);
+    NSLog(@"Access token: %@", [[self sharedManager] accessToken]);
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"Upload successful %@", JSON);
@@ -122,7 +125,7 @@
         
         if (!fileId) return;
         
-        NSDictionary *params = @{@"longitude" : @(droplet.coordinate.longitude), @"latitude" : @(droplet.coordinate.latitude), @"radius" : @(droplet.range), @"expires_in" : @(droplet.duration), @"file_id" : fileId, @"access_token" : [self accessToken]};
+        NSDictionary *params = @{@"longitude" : @(droplet.coordinate.longitude), @"latitude" : @(droplet.coordinate.latitude), @"radius" : @(droplet.range), @"expires_in" : @(droplet.duration), @"file_id" : fileId, @"access_token" : [[self sharedManager] accessToken]};
         
         [httpClient postPath:@"/entry/" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *returnValue = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
@@ -240,8 +243,4 @@
     return nil;
 }
 
-+ (NSString *)accessToken {
-    DRAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    return [[[appDelegate session] accessTokenData] accessToken];
-}
 @end
