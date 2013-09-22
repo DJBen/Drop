@@ -27,6 +27,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Scan Map" id="1mi-es-yqN">
+                        <barButtonItem key="leftBarButtonItem" title="Log In" id="mX1-r5-ht3">
+                            <connections>
+                                <action selector="facebookLogButtonTapped:" destination="vXZ-lx-hvc" id="U9U-Cg-ghp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Drop" id="nHs-uc-89y">
                             <connections>
                                 <action selector="dropButtonTapped:" destination="vXZ-lx-hvc" id="ADE-ge-4W2"/>
@@ -35,6 +40,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dropButton" destination="nHs-uc-89y" id="p8p-fZ-zUG"/>
+                        <outlet property="facebookLogButton" destination="mX1-r5-ht3" id="tLA-UQ-g3B"/>
                         <outlet property="mapView" destination="dMC-JS-Dv0" id="fLE-Ea-0xO"/>
                         <segue destination="vjG-es-u4I" kind="modal" identifier="dropSettingsSegue" modalTransitionStyle="crossDissolve" id="xCW-hc-6dF"/>
                     </connections>

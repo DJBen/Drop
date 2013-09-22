@@ -13,6 +13,7 @@
 		F437D0B117EE7ADB00182D48 /* DRFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0B017EE7ADB00182D48 /* DRFileManager.m */; };
 		F437D0B317EE836200182D48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0B217EE836200182D48 /* SystemConfiguration.framework */; };
 		F437D0B517EE836800182D48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0B417EE836800182D48 /* MobileCoreServices.framework */; };
+		F437D0B817EEA23E00182D48 /* DRMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0B717EEA23E00182D48 /* DRMessageViewController.m */; };
 		F451D45317ED69E00086BDD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45217ED69E00086BDD4 /* Foundation.framework */; };
 		F451D45517ED69E00086BDD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45417ED69E00086BDD4 /* CoreGraphics.framework */; };
 		F451D45717ED69E00086BDD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45617ED69E00086BDD4 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		F437D0B017EE7ADB00182D48 /* DRFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRFileManager.m; sourceTree = "<group>"; };
 		F437D0B217EE836200182D48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F437D0B417EE836800182D48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		F437D0B617EEA23E00182D48 /* DRMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRMessageViewController.h; sourceTree = "<group>"; };
+		F437D0B717EEA23E00182D48 /* DRMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRMessageViewController.m; sourceTree = "<group>"; };
 		F451D44F17ED69E00086BDD4 /* Drop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F451D45217ED69E00086BDD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F451D45417ED69E00086BDD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				F451D46817ED69E00086BDD4 /* DRMainViewController.m */,
 				F451D48F17EE1F2D0086BDD4 /* DRDropSettingsViewController.h */,
 				F451D49017EE1F2D0086BDD4 /* DRDropSettingsViewController.m */,
+				F437D0B617EEA23E00182D48 /* DRMessageViewController.h */,
+				F437D0B717EEA23E00182D48 /* DRMessageViewController.m */,
 				F451D48917EE01300086BDD4 /* DRDroplet.h */,
 				F451D48A17EE01300086BDD4 /* DRDroplet.m */,
 				F451D48C17EE122D0086BDD4 /* DRAimingView.h */,
@@ -337,6 +342,7 @@
 				F451D48E17EE122D0086BDD4 /* DRAimingView.m in Sources */,
 				F437D0B117EE7ADB00182D48 /* DRFileManager.m in Sources */,
 				F451D48B17EE01300086BDD4 /* DRDroplet.m in Sources */,
+				F437D0B817EEA23E00182D48 /* DRMessageViewController.m in Sources */,
 				F451D45F17ED69E00086BDD4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

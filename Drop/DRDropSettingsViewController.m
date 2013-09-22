@@ -16,7 +16,7 @@
 #define FioraBladeWaltz 1023
 #define KarthusRequiem 3389
 
-@interface DRDropSettingsViewController () <UIActionSheetDelegate, UIAlertViewDelegate>
+@interface DRDropSettingsViewController () <UIActionSheetDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) DRDroplet *droplet;
 
@@ -207,12 +207,22 @@
                 }];
                 break;
             }
-            case 1:
+            case 1: {
                 // Photo
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                picker.delegate = self;
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:picker animated:YES completion:nil];
                 break;
-            case 2:
+            }
+            case 2: {
                 // Gallery
+                UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+                picker.delegate = self;
+                picker.sourceType = UIImagePickerControllerCameraCaptureModePhoto;
+                [self presentViewController:picker animated:YES completion:nil];
                 break;
+            }
             case 3:
                 // Message
                 break;
@@ -234,6 +244,14 @@
         default:
             break;
     }
+}
+
+#pragma mark - Image Picker Delegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    self.contentThumbnail.image = chosenImage;
+    self.contentDetailLabel.text = @"Chosen Image";
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

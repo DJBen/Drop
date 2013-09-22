@@ -14,6 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *facebookLogButton;
+- (IBAction)facebookLogButtonTapped:(id)sender;
+
 - (IBAction)dropButtonTapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *dropButton;
 
