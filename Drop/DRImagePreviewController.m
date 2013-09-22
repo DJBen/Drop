@@ -9,6 +9,7 @@
 #import "DRImagePreviewController.h"
 
 #import "DRNetworkManager.h"
+#import <MBProgressHUD.h>
 
 @interface DRImagePreviewController ()
 
@@ -29,8 +30,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [hud setLabelText:@"Loading Image..."];
     [DRNetworkManager downloadFileWithDroplet:self.droplet withCompletion:^(NSString *filePath) {
         [self.imageView setImage:[UIImage imageWithContentsOfFile:filePath]];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 

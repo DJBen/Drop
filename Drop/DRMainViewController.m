@@ -15,6 +15,7 @@
 #import "DRImagePreviewController.h"
 #import "DRNetworkManager.h"
 #import <ReaderViewController.h>
+#import <MBProgressHUD.h>
 
 #define DroppableRadius 1000
 
@@ -195,7 +196,13 @@
         [self performSegueWithIdentifier:@"imagePreviewSegue" sender:droplet];
     } else if ([droplet.mimeType rangeOfString:@"pdf"].length) {
         // Open PDF
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [hud setLabelText:@"Loading PDF..."];
+        
         [DRNetworkManager downloadFileWithDroplet:droplet withCompletion:^(NSString *filePath) {
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
             ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:nil];
             
