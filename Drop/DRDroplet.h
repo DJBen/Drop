@@ -18,7 +18,19 @@
 
 @property (nonatomic) NSTimeInterval duration;
 
+@property (nonatomic, strong) NSString *dropletDescription;
+
+@property (nonatomic, strong) NSString *comment;
+
 @property (nonatomic, strong) NSString *password;
+
+@property (nonatomic, strong) UIImage *image;
+
+@property (nonatomic, strong) NSString *filePath;
+
+@property (nonatomic, strong) NSString *dropID;
+
+@property (nonatomic, strong) NSString *mimeType;
 
 - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 

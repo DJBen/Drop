@@ -43,4 +43,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentDetailLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *contentThumbnail;
 
+@property (weak, nonatomic) IBOutlet UIButton *dropletDescriptionButton;
+- (IBAction)describeDroplet:(id)sender;
+
 @end

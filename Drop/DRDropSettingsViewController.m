@@ -10,7 +10,7 @@
 
 #import "DRDroplet.h"
 #import <DBChooser/DBChooser.h>
-#import "DRFileManager.h"
+#import "DRNetworkManager.h"
 
 // Please ignore these two macros
 #define FioraBladeWaltz 1023
@@ -22,9 +22,17 @@
 
 @property (nonatomic) NSTimeInterval duration;
 
+@property (nonatomic) CLLocationDistance range;
+
+@property (nonatomic, strong) NSString *dropletDescription;
+
 @property (nonatomic, strong) NSString *password;
 
 @property (nonatomic, strong) NSDictionary *durationOptions;
+
+@property (nonatomic, strong) UIImage *chosenImage;
+
+@property (nonatomic, strong) NSString *filePath;
 
 @end
 
@@ -46,6 +54,9 @@
     
     self.durationOptions = @{@"1 day" : @(3600 * 24), @"2 days" : @(2 * 3600 * 24), @"12 hours" : @(3600 * 12), @"6 hours" : @(3600 * 6), @"1 week" : @(3600 * 24 * 7)};
     [self updateDuration:@"1 day"];
+    [self updateRange:500];
+    [self updatePassword:@""];
+    [self updateDropletDescription:@"My Droplet"];
     
     [self.mapView setRegion:self.originalRegion];
     self.droplet = [[DRDroplet alloc] initWithCoordinate:self.originalRegion.center];
@@ -69,7 +80,12 @@
 }
 
 - (IBAction)dropButtonTapped:(id)sender {
-    [self.delegate dropSettingsDone:self droplet:nil];
+    DRDroplet *droplet = [[DRDroplet alloc] initWithCoordinate:self.mapView.centerCoordinate range:self.range duration:self.duration password:self.password];
+    droplet.dropletDescription = self.dropletDescription;
+    droplet.image = self.chosenImage;
+    droplet.filePath = self.filePath;
+    
+    [self.delegate dropSettingsDone:self droplet:droplet];
 }
 
 
@@ -121,6 +137,14 @@
     [passwordAlert show];
 }
 
+
+- (IBAction)describeDroplet:(id)sender {
+    UIAlertView *descriptionAlert = [[UIAlertView alloc] initWithTitle:@"Edit Title" message:@"Please describe your droplet:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    descriptionAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    descriptionAlert.tag = 1;
+    [descriptionAlert show];
+}
+
 - (IBAction)chooseContentButtonTapped:(id)sender {
     UIActionSheet *contentSheet = [[UIActionSheet alloc] initWithTitle:@"Drop something..." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"From Dropbox", @"From Camera", @"From Gallery", @"A Message", nil];
     contentSheet.tag = KarthusRequiem;
@@ -149,11 +173,17 @@
 }
 
 - (void)updateRange:(CGFloat)range {
+    self.range = range;
     [self.mapView removeOverlays:[self.mapView overlays]];
     MKCircle *rangeIndicator = [MKCircle circleWithCenterCoordinate:self.droplet.coordinate radius:range];
     [self.mapView addOverlay:rangeIndicator];
     
     [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(self.droplet.coordinate, range * 2.2, range * 2.2) animated:YES];
+}
+
+- (void)updateDropletDescription:(NSString *)description {
+    self.dropletDescription = description;
+    [self.dropletDescriptionButton setTitle:description forState:UIControlStateNormal];
 }
 
 - (void)focusToCurrentCoordinate {
@@ -192,7 +222,7 @@
                     if ([results count]) {
                         self.chooseContentButton = NO;
                         DBChooserResult *result = results[0];
-                        [DRFileManager downloadFileFromDropbox:result withThumbnailImageView:self.contentThumbnail withProgress:^(CGFloat progress) {
+                        [DRNetworkManager downloadFileFromDropbox:result withThumbnailImageView:self.contentThumbnail withProgress:^(CGFloat progress) {
                             NSLog(@"%f", progress);
                             if (progress != 1.0f) {
                                 self.contentDetailLabel.text = [NSString stringWithFormat:@"Downloading... (%.1f%%)", progress * 100];
@@ -200,6 +230,7 @@
                             
                         } completion:^(NSString *fileName, NSString *filePath) {
                             NSLog(@"%@", filePath);
+                            self.filePath = filePath;
                             self.contentDetailLabel.text = fileName;
                             self.chooseContentButton.enabled = YES;
                         }];
@@ -234,23 +265,36 @@
 
 #pragma mark - Alert View Delegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch (buttonIndex) {
-        case 0:
-            break;
-        case 1:
-            // Confirm
-            [self updatePassword:[alertView textFieldAtIndex:0].text];
-            break;
-        default:
-            break;
+    if (alertView.tag == 0) {
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                // Confirm
+                [self updatePassword:[alertView textFieldAtIndex:0].text];
+                break;
+            default:
+                break;
+        }
+    } else if (alertView.tag == 1) {
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                // OK
+                [self updateDropletDescription:[alertView textFieldAtIndex:0].text];
+                break;
+            default:
+                break;
+        }
     }
 }
 
 #pragma mark - Image Picker Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
-    self.contentThumbnail.image = chosenImage;
-    self.contentDetailLabel.text = @"Chosen Image";
+    self.chosenImage = info[UIImagePickerControllerOriginalImage];
+    self.contentThumbnail.image = self.chosenImage;
+    self.contentDetailLabel.text = @"Your Image";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -10,10 +10,11 @@
 		CC0D98F5759840188973E72F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4E29F8429CA4EABAE927E9C /* libPods.a */; };
 		F437D0AD17EE762E00182D48 /* DBChooser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F437D0AB17EE762E00182D48 /* DBChooser.bundle */; };
 		F437D0AE17EE762E00182D48 /* DBChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0AC17EE762E00182D48 /* DBChooser.framework */; };
-		F437D0B117EE7ADB00182D48 /* DRFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0B017EE7ADB00182D48 /* DRFileManager.m */; };
+		F437D0B117EE7ADB00182D48 /* DRNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0B017EE7ADB00182D48 /* DRNetworkManager.m */; };
 		F437D0B317EE836200182D48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0B217EE836200182D48 /* SystemConfiguration.framework */; };
 		F437D0B517EE836800182D48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F437D0B417EE836800182D48 /* MobileCoreServices.framework */; };
 		F437D0B817EEA23E00182D48 /* DRMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0B717EEA23E00182D48 /* DRMessageViewController.m */; };
+		F437D0BB17EF08E000182D48 /* DRImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F437D0BA17EF08E000182D48 /* DRImagePreviewController.m */; };
 		F451D45317ED69E00086BDD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45217ED69E00086BDD4 /* Foundation.framework */; };
 		F451D45517ED69E00086BDD4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45417ED69E00086BDD4 /* CoreGraphics.framework */; };
 		F451D45717ED69E00086BDD4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F451D45617ED69E00086BDD4 /* UIKit.framework */; };
@@ -49,12 +50,14 @@
 		A4E29F8429CA4EABAE927E9C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F437D0AB17EE762E00182D48 /* DBChooser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DBChooser.bundle; sourceTree = "<group>"; };
 		F437D0AC17EE762E00182D48 /* DBChooser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DBChooser.framework; sourceTree = "<group>"; };
-		F437D0AF17EE7ADB00182D48 /* DRFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRFileManager.h; sourceTree = "<group>"; };
-		F437D0B017EE7ADB00182D48 /* DRFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRFileManager.m; sourceTree = "<group>"; };
+		F437D0AF17EE7ADB00182D48 /* DRNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNetworkManager.h; sourceTree = "<group>"; };
+		F437D0B017EE7ADB00182D48 /* DRNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNetworkManager.m; sourceTree = "<group>"; };
 		F437D0B217EE836200182D48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F437D0B417EE836800182D48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		F437D0B617EEA23E00182D48 /* DRMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRMessageViewController.h; sourceTree = "<group>"; };
 		F437D0B717EEA23E00182D48 /* DRMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRMessageViewController.m; sourceTree = "<group>"; };
+		F437D0B917EF08E000182D48 /* DRImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRImagePreviewController.h; sourceTree = "<group>"; };
+		F437D0BA17EF08E000182D48 /* DRImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRImagePreviewController.m; sourceTree = "<group>"; };
 		F451D44F17ED69E00086BDD4 /* Drop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F451D45217ED69E00086BDD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F451D45417ED69E00086BDD4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -161,12 +164,14 @@
 				F451D49017EE1F2D0086BDD4 /* DRDropSettingsViewController.m */,
 				F437D0B617EEA23E00182D48 /* DRMessageViewController.h */,
 				F437D0B717EEA23E00182D48 /* DRMessageViewController.m */,
+				F437D0B917EF08E000182D48 /* DRImagePreviewController.h */,
+				F437D0BA17EF08E000182D48 /* DRImagePreviewController.m */,
 				F451D48917EE01300086BDD4 /* DRDroplet.h */,
 				F451D48A17EE01300086BDD4 /* DRDroplet.m */,
 				F451D48C17EE122D0086BDD4 /* DRAimingView.h */,
 				F451D48D17EE122D0086BDD4 /* DRAimingView.m */,
-				F437D0AF17EE7ADB00182D48 /* DRFileManager.h */,
-				F437D0B017EE7ADB00182D48 /* DRFileManager.m */,
+				F437D0AF17EE7ADB00182D48 /* DRNetworkManager.h */,
+				F437D0B017EE7ADB00182D48 /* DRNetworkManager.m */,
 				F451D46A17ED69E00086BDD4 /* Images.xcassets */,
 				F451D45917ED69E00086BDD4 /* Supporting Files */,
 			);
@@ -252,6 +257,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Hophacks 2013";
 				TargetAttributes = {
+					F451D44E17ED69E00086BDD4 = {
+						DevelopmentTeam = 52RD2GH5DP;
+					};
 					F451D46F17ED69E10086BDD4 = {
 						TestTargetID = F451D44E17ED69E00086BDD4;
 					};
@@ -340,8 +348,9 @@
 				F451D46317ED69E00086BDD4 /* DRAppDelegate.m in Sources */,
 				F451D46917ED69E00086BDD4 /* DRMainViewController.m in Sources */,
 				F451D48E17EE122D0086BDD4 /* DRAimingView.m in Sources */,
-				F437D0B117EE7ADB00182D48 /* DRFileManager.m in Sources */,
+				F437D0B117EE7ADB00182D48 /* DRNetworkManager.m in Sources */,
 				F451D48B17EE01300086BDD4 /* DRDroplet.m in Sources */,
+				F437D0BB17EF08E000182D48 /* DRImagePreviewController.m in Sources */,
 				F437D0B817EEA23E00182D48 /* DRMessageViewController.m in Sources */,
 				F451D45F17ED69E00086BDD4 /* main.m in Sources */,
 			);
@@ -471,6 +480,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/DJBen/Documents/Developments/Drop,
@@ -479,6 +490,7 @@
 				GCC_PREFIX_HEADER = "Drop/Drop-Prefix.pch";
 				INFOPLIST_FILE = "Drop/Drop-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -489,6 +501,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/DJBen/Documents/Developments/Drop,
@@ -497,6 +511,7 @@
 				GCC_PREFIX_HEADER = "Drop/Drop-Prefix.pch";
 				INFOPLIST_FILE = "Drop/Drop-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -12,6 +12,8 @@
 #import "DRDroplet.h"
 #import "DRAimingView.h"
 #import "DRDropSettingsViewController.h"
+#import "DRImagePreviewController.h"
+#import "DRNetworkManager.h"
 
 #define DroppableRadius 1000
 
@@ -53,6 +55,10 @@
         DRDropSettingsViewController *dropSettingsViewController = [nav viewControllers][0];
         dropSettingsViewController.delegate = self;
         [dropSettingsViewController setOriginalRegion:self.mapView.region];
+    } else if ([segue.identifier isEqualToString:@"imagePreviewSegue"]) {
+        UINavigationController *nav = [segue destinationViewController];
+        DRImagePreviewController *imagePreviewController = [nav viewControllers][0];
+        [imagePreviewController setDroplet:sender];
     }
 }
 
@@ -73,6 +79,9 @@
             [appDelegate.session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
                 // we recurse here, in order to update buttons and labels
                 [self updateFacebookButton];
+                
+                // Try login to DROP server
+                if (session.isOpen) [DRNetworkManager loginToDropServer];
             }];
 //        }
     }
@@ -112,6 +121,9 @@
         [appDelegate.session openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
             // and here we make sure to update our UX according to the new session state
             [self updateFacebookButton];
+            
+            // Try login to DROP server
+            if (session.isOpen) [DRNetworkManager loginToDropServer];
         }];
     }
 }
@@ -136,6 +148,8 @@
         MKCoordinateRegion region = MKCoordinateRegionMake(userLocation.coordinate, span);
         [mapView setRegion:region animated:YES];
         _firstTimeLocationUpdate = NO;
+        
+        [self updateDroplets];
     }
 
     [self refreshOverlay];
@@ -158,6 +172,7 @@
             annotationView.pinColor = MKPinAnnotationColorPurple;
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
+            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         } else {
             annotationView.annotation = annotation;
         }
@@ -165,6 +180,13 @@
     }
     
     return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    DRDroplet *droplet = view.annotation;
+    if ([droplet.mimeType rangeOfString:@"image"].length) {
+        [self performSegueWithIdentifier:@"imagePreviewSegue" sender:droplet];
+    }
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
@@ -239,7 +261,24 @@
 - (void)dropSettingsDone:(id)sender droplet:(DRDroplet *)droplet {
     [self refreshOverlay];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+    // Add the droplet!
+    [DRNetworkManager uploadDroplet:droplet withProgress:^(CGFloat progress) {
+        NSLog(@"Progress: %.2f", progress);
+    } withCompletion:^{
+        NSLog(@"Complete");
+        [self updateDroplets];
+    }];
 
+}
+
+- (void)updateDroplets {
+    [DRNetworkManager getDropsNearCoordinate:self.currentUserLocation.location.coordinate withCompletion:^(NSArray *droplets) {
+        [self.mapView removeAnnotations:[self.mapView annotations]];
+        [droplets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [self.mapView addAnnotation:obj];
+        }];
+    }];
 }
 
 @end

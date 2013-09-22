@@ -25,18 +25,20 @@
 - (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate range:(CLLocationDistance)range duration:(NSTimeInterval)duration password:(NSString *)password {
     self = [self initWithCoordinate:coordinate];
     if (self) {
-        
+        _range = range;
+        _duration = duration;
+        _password = password;
     }
     return self;
 }
 
 #pragma mark - Annotation
 - (NSString *)title {
-    return @"Test";
+    return self.dropletDescription;
 }
 
 - (NSString *)subtitle {
-    return @"Test Subtitle";
+    return self.comment;
 }
 
 @end
