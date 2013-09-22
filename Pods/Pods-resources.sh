@@ -40,6 +40,28 @@ install_resource()
   esac
 }
 install_resource "Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle"
+install_resource "vfrReader/Resources/Reader.pdf"
+install_resource "vfrReader/Resources/de.lproj"
+install_resource "vfrReader/Resources/en.lproj"
+install_resource "vfrReader/Graphics/AppIcon-057.png"
+install_resource "vfrReader/Graphics/AppIcon-072.png"
+install_resource "vfrReader/Graphics/AppIcon-114.png"
+install_resource "vfrReader/Graphics/AppIcon-144.png"
+install_resource "vfrReader/Graphics/Default-568h@2x.png"
+install_resource "vfrReader/Graphics/Reader-Button-H.png"
+install_resource "vfrReader/Graphics/Reader-Button-H@2x.png"
+install_resource "vfrReader/Graphics/Reader-Button-N.png"
+install_resource "vfrReader/Graphics/Reader-Button-N@2x.png"
+install_resource "vfrReader/Graphics/Reader-Email.png"
+install_resource "vfrReader/Graphics/Reader-Email@2x.png"
+install_resource "vfrReader/Graphics/Reader-Mark-N.png"
+install_resource "vfrReader/Graphics/Reader-Mark-N@2x.png"
+install_resource "vfrReader/Graphics/Reader-Mark-Y.png"
+install_resource "vfrReader/Graphics/Reader-Mark-Y@2x.png"
+install_resource "vfrReader/Graphics/Reader-Print.png"
+install_resource "vfrReader/Graphics/Reader-Print@2x.png"
+install_resource "vfrReader/Graphics/Reader-Thumbs.png"
+install_resource "vfrReader/Graphics/Reader-Thumbs@2x.png"
 
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then

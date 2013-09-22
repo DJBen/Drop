@@ -14,10 +14,11 @@
 #import "DRDropSettingsViewController.h"
 #import "DRImagePreviewController.h"
 #import "DRNetworkManager.h"
+#import <ReaderViewController.h>
 
 #define DroppableRadius 1000
 
-@interface DRMainViewController () <UIGestureRecognizerDelegate, DRAimingDelegate, DRDropSettingsDelegate>
+@interface DRMainViewController () <UIGestureRecognizerDelegate, DRAimingDelegate, DRDropSettingsDelegate, ReaderViewControllerDelegate>
 
 @property (nonatomic) BOOL firstTimeLocationUpdate;
 @property (nonatomic) BOOL dropMode;
@@ -81,7 +82,10 @@
                 [self updateFacebookButton];
                 
                 // Try login to DROP server
-                if (session.isOpen) [DRNetworkManager loginToDropServer];
+                if (session.isOpen) {
+                    [DRNetworkManager loginToDropServer];
+                    NSLog(@"%@", [[session accessTokenData] accessToken]);
+                }
             }];
 //        }
     }
@@ -123,7 +127,10 @@
             [self updateFacebookButton];
             
             // Try login to DROP server
-            if (session.isOpen) [DRNetworkManager loginToDropServer];
+            if (session.isOpen) {
+                [DRNetworkManager loginToDropServer];
+                NSLog(@"%@", [[session accessTokenData] accessToken]);
+            }
         }];
     }
 }
@@ -186,6 +193,29 @@
     DRDroplet *droplet = view.annotation;
     if ([droplet.mimeType rangeOfString:@"image"].length) {
         [self performSegueWithIdentifier:@"imagePreviewSegue" sender:droplet];
+    } else if ([droplet.mimeType rangeOfString:@"pdf"].length) {
+        // Open PDF
+        [DRNetworkManager downloadFileWithDroplet:droplet withCompletion:^(NSString *filePath) {
+            
+            ReaderDocument *document = [ReaderDocument withDocumentFilePath:filePath password:nil];
+            
+            if (document != nil) // Must have a valid ReaderDocument object in order to proceed with things
+            {
+                ReaderViewController *readerViewController = [[ReaderViewController alloc] initWithReaderDocument:document];
+                
+                readerViewController.delegate = self; // Set the ReaderViewController delegate to self
+                readerViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                readerViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+                
+                [self presentViewController:readerViewController animated:YES completion:nil];
+            }
+        }];
+    } else if ([droplet.mimeType rangeOfString:@"text/plain"].length) {
+        [DRNetworkManager downloadFileWithDroplet:droplet withCompletion:^(NSString *filePath) {
+            UIAlertView *textContent = [[UIAlertView alloc] initWithTitle:@"Your message" message:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+            [textContent show];
+        }];
+
     }
 }
 
@@ -279,6 +309,14 @@
             [self.mapView addAnnotation:obj];
         }];
     }];
+}
+
+#pragma mark ReaderViewControllerDelegate methods
+
+- (void)dismissReaderViewController:(ReaderViewController *)viewController
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 @end

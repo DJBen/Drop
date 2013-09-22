@@ -105,9 +105,12 @@
         mimeType = [self mimeTypeForFileAtPath:droplet.filePath];
         fileName = [droplet.filePath lastPathComponent];
     }
+    
     NSMutableURLRequest *request = [httpClient multipartFormRequestWithMethod:@"POST" path:@"/drop/" parameters:@{@"access_token" : [self accessToken], @"comment" : fileName, @"title" : droplet.dropletDescription, @"type" : mimeType} constructingBodyWithBlock: ^(id <AFMultipartFormData> formData) {
         [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:mimeType];
     }];
+    
+    NSLog(@"Access token: %@", [self accessToken]);
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         NSLog(@"Upload successful %@", JSON);
@@ -116,6 +119,8 @@
         NSURL *url = [NSURL URLWithString:ServerPath];
         
         AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+        
+        if (!fileId) return;
         
         NSDictionary *params = @{@"longitude" : @(droplet.coordinate.longitude), @"latitude" : @(droplet.coordinate.latitude), @"radius" : @(droplet.range), @"expires_in" : @(droplet.duration), @"file_id" : fileId, @"access_token" : [self accessToken]};
         

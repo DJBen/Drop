@@ -15,6 +15,7 @@
 // Please ignore these two macros
 #define FioraBladeWaltz 1023
 #define KarthusRequiem 3389
+#define FiddlesticksSupriseParty 1123
 
 @interface DRDropSettingsViewController () <UIActionSheetDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -254,9 +255,14 @@
                 [self presentViewController:picker animated:YES completion:nil];
                 break;
             }
-            case 3:
+            case 3: {
                 // Message
+                UIAlertView *textAlert = [[UIAlertView alloc] initWithTitle:@"Enter A Message" message:@"Please enter your message:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+                textAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+                textAlert.tag = FiddlesticksSupriseParty;
+                [textAlert show];
                 break;
+            }
             default:
                 break;
         }
@@ -284,6 +290,23 @@
                 // OK
                 [self updateDropletDescription:[alertView textFieldAtIndex:0].text];
                 break;
+            default:
+                break;
+        }
+    } else if (alertView.tag == FiddlesticksSupriseParty) {
+        switch (buttonIndex) {
+            case 1: {
+                // Send text as information
+                self.contentThumbnail.image = nil;
+                self.contentDetailLabel.text = [alertView textFieldAtIndex:0].text;
+                NSArray *paths = NSSearchPathForDirectoriesInDomains
+                (NSDocumentDirectory, NSUserDomainMask, YES);
+                NSString *supportDirectory = [paths objectAtIndex:0];
+                NSString *fullPath = [supportDirectory stringByAppendingPathComponent:@"message.txt"];
+                [[alertView textFieldAtIndex:0].text writeToFile:fullPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                self.filePath = fullPath;
+                break;
+            }
             default:
                 break;
         }
